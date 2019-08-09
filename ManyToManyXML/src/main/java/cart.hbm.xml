@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping package="com.controller.manytomany">
+  
+     <class name="Cart" table="CART_TBL">
+		<id name="id" type="long">
+			<column name="cart_id" />
+			<generator class="identity" />
+		</id>
+		<property name="total" type="double" column="cart_total" />
+
+		<set name="items" table="CART_ITEMS_TBL" fetch="select" cascade="all">
+			<key column="cart_id" />
+			<many-to-many class="Item" column="item_id" />
+		</set>
+	</class>
+
+
+</hibernate-mapping>
